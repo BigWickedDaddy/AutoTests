@@ -29,7 +29,7 @@ public class AccountData
         AccountData user = new AccountData("solovyanenko2002@mail.ru", "26h6kBa9fthinPJ");
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void First()
         {
             OpenLogInPage();
             GetAccKeys(user);
@@ -37,8 +37,11 @@ public class AccountData
         }
         
         [Test]
-        public void TheKekTest()
+        public void Second()
         {
+            OpenLogInPage();
+            GetAccKeys(user);
+            LogIn();
             GotoProfilePage();
             GetNewNotes();
             SaveProfileChanges();
