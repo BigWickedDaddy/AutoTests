@@ -17,21 +17,22 @@ public class ApplicationManager
     private string baseURL;
 
     private NavigationHelper navigation;
-    // private LoginHelper auth;
-    
+
     public AppManager()
     {
-        // driver = new ChromeDriver("/Users/olegsolovyanenko/RiderProjects/AutoTests_One/AutoTests_One/bin/Debug/net6.0");
-        // baseURL = "https://www.google.com/";
-        // verificationErrors = new StringBuilder();
-        
-        driver = new ChromeDriver("/Users/olegsolovyanenko/RiderProjects/AutoTests_One/AutoTests_One/bin/Debug/net6.0");        driver.Manage().Window.Maximize();
+        driver = new ChromeDriver("/Users/olegsolovyanenko/RiderProjects/AutoTests_One/AutoTests_One/bin/Debug/net6.0");
+        driver.Manage().Window.Maximize();
         baseURL = "https://www.google.com/";
         verificationErrors = new StringBuilder();
-        // auth = new LoginHelper(this);
         navigation = new NavigationHelper(this, baseURL);
     }
     
+    public void Stop()
+    {
+        driver.Quit();
+    }
+    
+    //Property
     public IWebDriver Driver
     {
         get
@@ -39,7 +40,6 @@ public class ApplicationManager
             return driver;
         }
     }
-    
     public NavigationHelper Navigation
     {
         get
@@ -48,11 +48,4 @@ public class ApplicationManager
         }
     }
 
-    // public LoginHelper Auth
-    // {
-    //     get
-    //     {
-    //         return auth;
-    //     }
-    // }
 }

@@ -12,19 +12,9 @@ namespace AutoTests_Two;
 
 public class HelperBase
 {
-    private StringBuilder verificationErrors;
-    private string baseURL;
-    private bool acceptNextAlert = true;
-    
-    protected AppManager manager;
     protected IWebDriver driver;
+    protected bool acceptNextAlert = true;
 
-    public HelperBase(AppManager manager)
-    {
-        this.manager = manager;
-        this.driver = manager.Driver;
-    }
-    
     private bool IsElementPresent(By by)
     {
         try
@@ -73,5 +63,4 @@ public class HelperBase
             acceptNextAlert = true;
         }
     }
-    
 }

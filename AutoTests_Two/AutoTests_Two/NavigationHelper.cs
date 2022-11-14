@@ -18,7 +18,7 @@ public class NavigationHelper : HelperBase
     {
         this.baseURL = baseURL;
     }
-
+    
     public void SaveProfileChanges()
     {
         driver.FindElement(By.Name("save")).Click();
