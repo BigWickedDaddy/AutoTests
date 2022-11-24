@@ -18,10 +18,10 @@ public class ApplicationManager
 
         public NavigationHelper _navigationHelper;
         public LoginHelper _loginhelper;
-
+        
         public IWebDriver Driver => _driver;
         
-        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();// 4
 
         public NavigationHelper NavigationHelper => _navigationHelper;
         public LoginHelper LoginHelper => _loginhelper;

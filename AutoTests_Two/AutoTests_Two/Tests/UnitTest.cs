@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using AutoTests_Two.Models;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -9,19 +10,6 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace AutoTests_Two;
-
-public class AccountData
-{
-    public AccountData(string username, string password)
-    {
-        Username = username;
-        Password = password;
-    }
-    public string Username {get; set;}
-
-    public string Password { get; set; }
-        
-}
 
 [TestFixture]
     public class UntitledTestCase : TestBase

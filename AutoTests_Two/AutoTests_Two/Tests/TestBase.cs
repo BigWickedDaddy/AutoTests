@@ -18,13 +18,13 @@ public class TestBase
     [SetUp]
     public void SetupTest()
     {
-        ApplicationManager = new ApplicationManager();
+        ApplicationManager = ApplicationManager.GetInstance();
     }
     
-    [TearDown]
-    public void TeardownTest()
-    {
-        ApplicationManager.Stop();
-    }
+    // [TearDown]
+    // public void TeardownTest()
+    // {
+    //     ApplicationManager.Stop();
+    // }
     
 }
