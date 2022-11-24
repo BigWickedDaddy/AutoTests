@@ -7,4 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AutoTests_One
-build_property.ProjectDir = /Users/olegsolovyanenko/RiderProjects/AutoTests_One/AutoTests_One/
+build_property.ProjectDir = /Users/olegsolovyanenko/Documents/GitHub/AutoTests/AutoTests_One/AutoTests_One/

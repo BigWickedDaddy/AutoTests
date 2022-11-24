@@ -13,18 +13,18 @@ namespace AutoTests_Two;
 public class TestBase
 {
     private bool acceptNextAlert = true;
-    protected AppManager app;
+    protected ApplicationManager ApplicationManager;
 
     [SetUp]
     public void SetupTest()
     {
-        app = new AppManager();
+        ApplicationManager = new ApplicationManager();
     }
     
     [TearDown]
     public void TeardownTest()
     {
-        app.Stop();
+        ApplicationManager.Stop();
     }
     
 }

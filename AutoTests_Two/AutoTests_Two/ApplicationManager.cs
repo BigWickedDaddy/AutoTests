@@ -16,21 +16,23 @@ public class ApplicationManager
         private StringBuilder _verificationErrors;
         private string _baseUrl;
 
-        private NavigationHelper _navigationHelper;
+        public NavigationHelper _navigationHelper;
+        public LoginHelper _loginhelper;
 
         public IWebDriver Driver => _driver;
         
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         public NavigationHelper NavigationHelper => _navigationHelper;
+        public LoginHelper LoginHelper => _loginhelper;
 
-        private ApplicationManager()
+        public ApplicationManager()
         {
             _driver = new ChromeDriver("/Users/alexandronischenko/RiderProjects/AutoTest_One/packages/Selenium.WebDriver.ChromeDriver.106.0.5249.6100/driver/mac64arm");
             _baseUrl = "https://www.google.com/";
             _verificationErrors = new StringBuilder();
             _navigationHelper = new NavigationHelper(this, _baseUrl);
-
+            _loginhelper = new LoginHelper(this);
         }
         
         ~ApplicationManager()

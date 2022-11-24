@@ -31,20 +31,19 @@ public class AccountData
         [Test]
         public void First()
         {
-            OpenLogInPage();
-            GetAccKeys(user);
-            LogIn();
+            ApplicationManager.LoginHelper.OpenLogInPage();
+            ApplicationManager.LoginHelper.GetAccKeys(user);
+            ApplicationManager.LoginHelper.LogIn();
         }
         
         [Test]
         public void Second()
         {
-            OpenLogInPage();
-            GetAccKeys(user);
-            LogIn();
-            GotoProfilePage();
-            GetNewNotes();
-            SaveProfileChanges();
+            ApplicationManager.LoginHelper.OpenLogInPage();
+            ApplicationManager.LoginHelper.GetAccKeys(user);
+            ApplicationManager.LoginHelper.LogIn();
+            ApplicationManager.NavigationHelper.GotoProfilePage();
+            ApplicationManager.NavigationHelper.GetNewNotes();
+            ApplicationManager.NavigationHelper.SaveProfileChanges();
         }
-        
     }

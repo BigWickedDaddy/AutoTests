@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0n0mT0aLmFejMiBn7Rq7z5z9T4BdSPodEBVuQHFTIB2b2glAFR1ZPVIwVsqkb5V83Cjrw/8zZGtLX1F35it0Zw==",
+  "dgSpecHash": "w2MXXTfesPqtIeMOTOPUGLbCbzT4e1xk29eD877g5tBXV3NGUp4jMcZ2QfXPZJr6NuOhO9zm1yPlsnNd2yLQbA==",
   "success": true,
-  "projectFilePath": "/Users/olegsolovyanenko/RiderProjects/AutoTests_One/AutoTests_One/AutoTests_One.csproj",
+  "projectFilePath": "/Users/olegsolovyanenko/Documents/GitHub/AutoTests/AutoTests_One/AutoTests_One/AutoTests_One.csproj",
   "expectedPackageFiles": [
     "/Users/olegsolovyanenko/.nuget/packages/coverlet.collector/3.1.2/coverlet.collector.3.1.2.nupkg.sha512",
     "/Users/olegsolovyanenko/.nuget/packages/microsoft.codecoverage/17.1.0/microsoft.codecoverage.17.1.0.nupkg.sha512",
