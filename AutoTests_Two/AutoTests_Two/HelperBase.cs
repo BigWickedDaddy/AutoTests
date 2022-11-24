@@ -11,56 +11,55 @@ using OpenQA.Selenium.Support.UI;
 namespace AutoTests_Two;
 
 public class HelperBase
-{
-    protected IWebDriver driver;
-    protected bool acceptNextAlert = true;
-
-    private bool IsElementPresent(By by)
     {
-        try
-        {
-            driver.FindElement(by);
-            return true;
-        }
-        catch (NoSuchElementException)
-        {
-            return false;
-        }
-    }
+        protected ApplicationManager _applicationManager;
+        protected IWebDriver driver;
+        private bool acceptNextAlert = true;
 
-    private bool IsAlertPresent()
-    {
-        try
+        public HelperBase(ApplicationManager applicationManager)
         {
-            driver.SwitchTo().Alert();
-            return true;
+            this._applicationManager = applicationManager;
+            this.driver = applicationManager.Driver;
         }
-        catch (NoAlertPresentException)
+        
+        private bool IsElementPresent(By by)
         {
-            return false;
-        }
-    }
-
-    private string CloseAlertAndGetItsText()
-    {
-        try
-        {
-            IAlert alert = driver.SwitchTo().Alert();
-            string alertText = alert.Text;
-            if (acceptNextAlert)
+            try
             {
-                alert.Accept();
+                driver.FindElement(by);
+                return true;
             }
-            else
+            catch (NoSuchElementException)
             {
-                alert.Dismiss();
+                return false;
             }
-
-            return alertText;
         }
-        finally
+        
+        private bool IsAlertPresent()
         {
-            acceptNextAlert = true;
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException)
+            {
+                return false;
+            }
+        }
+        
+        private string CloseAlertAndGetItsText() {
+            try {
+                IAlert alert = driver.SwitchTo().Alert();
+                string alertText = alert.Text;
+                if (acceptNextAlert) {
+                    alert.Accept();
+                } else {
+                    alert.Dismiss();
+                }
+                return alertText;
+            } finally {
+                acceptNextAlert = true;
+            }
         }
     }
-}

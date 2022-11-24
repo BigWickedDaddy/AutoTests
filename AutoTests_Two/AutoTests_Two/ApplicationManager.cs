@@ -11,41 +11,53 @@ using OpenQA.Selenium.Support.UI;
 namespace AutoTests_Two;
 
 public class ApplicationManager
-{
-    private IWebDriver driver;
-    private StringBuilder verificationErrors;
-    private string baseURL;
+    {
+        private IWebDriver _driver;
+        private StringBuilder _verificationErrors;
+        private string _baseUrl;
 
-    private NavigationHelper navigation;
+        private NavigationHelper _navigationHelper;
 
-    public AppManager()
-    {
-        driver = new ChromeDriver("/Users/olegsolovyanenko/RiderProjects/AutoTests_One/AutoTests_One/bin/Debug/net6.0");
-        driver.Manage().Window.Maximize();
-        baseURL = "https://www.google.com/";
-        verificationErrors = new StringBuilder();
-        navigation = new NavigationHelper(this, baseURL);
-    }
-    
-    public void Stop()
-    {
-        driver.Quit();
-    }
-    
-    //Property
-    public IWebDriver Driver
-    {
-        get
+        public IWebDriver Driver => _driver;
+        
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
+
+        public NavigationHelper NavigationHelper => _navigationHelper;
+
+        private ApplicationManager()
         {
-            return driver;
+            _driver = new ChromeDriver("/Users/alexandronischenko/RiderProjects/AutoTest_One/packages/Selenium.WebDriver.ChromeDriver.106.0.5249.6100/driver/mac64arm");
+            _baseUrl = "https://www.google.com/";
+            _verificationErrors = new StringBuilder();
+            _navigationHelper = new NavigationHelper(this, _baseUrl);
+
+        }
+        
+        ~ApplicationManager()
+        {
+            try
+            {
+                _driver.Quit();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+        }
+        
+        public void Stop()
+        {
+            _driver.Quit();
+        }
+        
+        public static ApplicationManager GetInstance()
+        {
+            if (!app.IsValueCreated)
+            {
+                var newInstance = new ApplicationManager();
+                newInstance._navigationHelper.GotoProfilePage();
+                app.Value = newInstance;
+            }
+            return app.Value;
         }
     }
-    public NavigationHelper Navigation
-    {
-        get
-        {
-            return navigation;
-        }
-    }
-
-}
