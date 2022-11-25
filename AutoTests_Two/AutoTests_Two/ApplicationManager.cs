@@ -18,6 +18,7 @@ public class ApplicationManager
 
         public NavigationHelper _navigationHelper;
         public LoginHelper _loginhelper;
+        public ProfileHelper _profilehelper;
         
         public IWebDriver Driver => _driver;
         
@@ -25,6 +26,7 @@ public class ApplicationManager
 
         public NavigationHelper NavigationHelper => _navigationHelper;
         public LoginHelper LoginHelper => _loginhelper;
+        public ProfileHelper ProfileHelper => _profilehelper;
 
         public ApplicationManager()
         {
@@ -33,6 +35,7 @@ public class ApplicationManager
             _verificationErrors = new StringBuilder();
             _navigationHelper = new NavigationHelper(this, _baseUrl);
             _loginhelper = new LoginHelper(this);
+            _profilehelper = new ProfileHelper(this);
         }
         
         ~ApplicationManager()

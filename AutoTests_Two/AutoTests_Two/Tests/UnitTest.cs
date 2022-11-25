@@ -17,7 +17,7 @@ namespace AutoTests_Two;
         AccountData user = new AccountData("solovyanenko2002@mail.ru", "26h6kBa9fthinPJ");
 
         [Test]
-        public void First()
+        public void LoginInto()
         {
             ApplicationManager.LoginHelper.OpenLogInPage();
             ApplicationManager.LoginHelper.GetAccKeys(user);
@@ -25,13 +25,21 @@ namespace AutoTests_Two;
         }
         
         [Test]
-        public void Second()
+        public void ProfileData()
         {
-            ApplicationManager.LoginHelper.OpenLogInPage();
-            ApplicationManager.LoginHelper.GetAccKeys(user);
-            ApplicationManager.LoginHelper.LogIn();
+            // ApplicationManager.LoginHelper.OpenLogInPage();
+            // ApplicationManager.LoginHelper.GetAccKeys(user);
+            // ApplicationManager.LoginHelper.LogIn();
+
+            var newProfileData = new ProfileData("NightMode","testovoe_message");
+
             ApplicationManager.NavigationHelper.GotoProfilePage();
-            ApplicationManager.NavigationHelper.GetNewNotes();
-            ApplicationManager.NavigationHelper.SaveProfileChanges();
+            ApplicationManager.ProfileHelper.GetNewNotes(newProfileData);
+            ApplicationManager.ProfileHelper.SaveProfileChanges();
+            
+            var profileData = ApplicationManager.ProfileHelper.GetProfileData();
+            
+            Assert.AreEqual(profileData.about ,newProfileData.about);
+            Assert.AreEqual(profileData.nickname,newProfileData.nickname);
         }
     }

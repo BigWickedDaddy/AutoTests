@@ -19,20 +19,6 @@ public NavigationHelper(ApplicationManager manager, string baseURL)
             this.baseURL = baseURL;
         }
 
-    
-    public void SaveProfileChanges()
-    {
-        driver.FindElement(By.Name("save")).Click();
-    }
-
-    public void GetNewNotes()
-    {
-        driver.FindElement(By.Name("PERSONAL_NOTES")).Click();
-        driver.FindElement(By.Name("PERSONAL_NOTES")).Clear();
-        driver.FindElement(By.Name("PERSONAL_NOTES")).SendKeys("testovoe message");
-        driver.FindElement(By.XPath("//div[@id='main']/main/main/div/form/div/div/div/div[2]")).Click();
-    }
-
     public void GotoProfilePage()
     {
         driver.Navigate().GoToUrl("https://cybermos.ru/panel/user/config/");

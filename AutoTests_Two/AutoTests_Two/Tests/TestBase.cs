@@ -19,6 +19,7 @@ public class TestBase
     public void SetupTest()
     {
         ApplicationManager = ApplicationManager.GetInstance();
+        // ApplicationManager = new ApplicationManager();
     }
     
     // [TearDown]
