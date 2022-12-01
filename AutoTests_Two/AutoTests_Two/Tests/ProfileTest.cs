@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Xml.Serialization;
 using AutoTests_Two.Models;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -13,14 +14,14 @@ namespace AutoTests_Two;
 
 public class ProfileTest : TestBase
 {
-    [Test]
-    public void ProfileTeste()
+    [Test, TestCaseSource("GroupDataFromXmlFile")]
+    public void ProfileTeste(ProfileData newProfileData)
     {
         // ApplicationManager.LoginHelper.OpenLogInPage();
         // ApplicationManager.LoginHelper.GetAccKeys(user);
         // ApplicationManager.LoginHelper.LogIn();
 
-        var newProfileData = new ProfileData("NightMode","testovoe_message");
+        // var newProfileData = new ProfileData("NightMode","testovoe_message");
 
         ApplicationManager.NavigationHelper.GotoProfilePage();
         ApplicationManager.ProfileHelper.GetNewNotes(newProfileData);
@@ -31,4 +32,11 @@ public class ProfileTest : TestBase
         Assert.AreEqual(profileData.about ,newProfileData.about);
         Assert.AreEqual(profileData.nickname,newProfileData.nickname);
     }
+    
+    public static IEnumerable<ProfileData> GroupDataFromXmlFile()
+    {
+        return (List<ProfileData>) new XmlSerializer(typeof(List<ProfileData>))
+            .Deserialize(new StreamReader(@"/Users/olegsolovyanenko/RiderProjects/GenerateTestData/GenerateTestData/bin/Debug/net6.0/profileData.xml"));
+    }
+
 }

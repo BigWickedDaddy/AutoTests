@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Xml.Serialization;
 using AutoTests_Two.Models;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -31,12 +32,14 @@ public class ProfileHelper : HelperBase
         driver.FindElement(By.XPath("//div[@id='main']/main/main/div/form/div/div/div/div[2]")).Click();
     }
     
-    public ProfileData GetProfileData()
+    public static IEnumerable<ProfileData> GroupDataFromXmlFile()
     {
-        var nickaname = driver.FindElement(By.Name("UF_NICK")).GetAttribute("value");
-        var about = driver.FindElement(By.Name("PERSONAL_NOTES")).GetAttribute("value");
-        
-        return new ProfileData(nickaname, about);
+        var path =
+            @"/Users/olegsolovyanenko/RiderProjects/GenerateTestData/GenerateTestData/bin/Debug/net6.0/ProfileData.xml";
+        var stream = new StreamReader(path);
+        var serializer = new XmlSerializer(typeof(List<ProfileData>));
+        var data = serializer.Deserialize(stream) as List<ProfileData>;
+        return data;
     }
 
 }
