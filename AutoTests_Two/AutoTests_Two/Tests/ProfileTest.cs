@@ -35,8 +35,12 @@ public class ProfileTest : TestBase
     
     public static IEnumerable<ProfileData> GroupDataFromXmlFile()
     {
-        return (List<ProfileData>) new XmlSerializer(typeof(List<ProfileData>))
-            .Deserialize(new StreamReader(@"/Users/olegsolovyanenko/RiderProjects/GenerateTestData/GenerateTestData/bin/Debug/net6.0/profileData.xml"));
+        var path =
+            @"/Users/olegsolovyanenko/RiderProjects/GenerateTestData/GenerateTestData/bin/Debug/net6.0/ProfileData.xml";
+        var stream = new StreamReader(path);
+        var serializer = new XmlSerializer(typeof(List<ProfileData>));
+        var data = serializer.Deserialize(stream) as List<ProfileData>;
+        return data;
     }
 
 }

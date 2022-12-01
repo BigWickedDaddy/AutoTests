@@ -29,17 +29,18 @@ public class ProfileHelper : HelperBase
         driver.FindElement(By.Name("PERSONAL_NOTES")).Click();
         driver.FindElement(By.Name("PERSONAL_NOTES")).Clear();
         driver.FindElement(By.Name("PERSONAL_NOTES")).SendKeys(profileData.about);
+        driver.FindElement(By.Name("NAME")).Click();
+        driver.FindElement(By.Name("NAME")).Clear();
+        driver.FindElement(By.Name("NAME")).SendKeys(profileData.nickname);
         driver.FindElement(By.XPath("//div[@id='main']/main/main/div/form/div/div/div/div[2]")).Click();
     }
-    
-    public static IEnumerable<ProfileData> GroupDataFromXmlFile()
+
+    public ProfileData GetProfileData()
     {
-        var path =
-            @"/Users/olegsolovyanenko/RiderProjects/GenerateTestData/GenerateTestData/bin/Debug/net6.0/ProfileData.xml";
-        var stream = new StreamReader(path);
-        var serializer = new XmlSerializer(typeof(List<ProfileData>));
-        var data = serializer.Deserialize(stream) as List<ProfileData>;
-        return data;
+        var nickname = driver.FindElement(By.Name("NAME")).GetAttribute("value");
+        var about = driver.FindElement(By.Name("PERSONAL_NOTES")).GetAttribute("value");
+        
+        return new ProfileData(nickname, about);
     }
 
 }

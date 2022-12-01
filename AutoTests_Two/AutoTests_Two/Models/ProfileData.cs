@@ -10,4 +10,9 @@ public class ProfileData
         this.nickname = nickname;
         this.about = about;
     }
+
+    public ProfileData()
+    {
+        
+    }
 }
