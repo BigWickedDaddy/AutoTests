@@ -22,6 +22,36 @@ public class HelperBase
             this.driver = applicationManager.Driver;
         }
         
+        // public bool IsLoggedIn()
+        // {
+        //     try
+        //     {
+        //         string username = driver.FindElement(By.XPath("/html/body/div[1]/div/ul/li[4]/a[1]/div")).Text;
+        //         return true;
+        //     }
+        //     catch (NoSuchElementException)
+        //     {
+        //         return false;
+        //     }
+        // }
+    
+        // public bool IsLoggedIn(string username)
+        // {
+        //     try
+        //     {
+        //         string site_username = driver.FindElement(By.XPath("/html/body/div[1]/div/ul/li[4]/a[1]/div")).Text;
+        //         if (site_username == username)
+        //         {
+        //             return true;
+        //         }
+        //         return false;
+        //     }
+        //     catch (NoSuchElementException)
+        //     {
+        //         return false;
+        //     }
+        // }
+        
         private bool IsElementPresent(By by)
         {
             try
@@ -62,4 +92,6 @@ public class HelperBase
                 acceptNextAlert = true;
             }
         }
+        
+        
     }

@@ -26,11 +26,12 @@ public class ProfileTest : TestBase
         ApplicationManager.NavigationHelper.GotoProfilePage();
         ApplicationManager.ProfileHelper.GetNewNotes(newProfileData);
         ApplicationManager.ProfileHelper.SaveProfileChanges();
-            
+        
         var profileData = ApplicationManager.ProfileHelper.GetProfileData();
             
         Assert.AreEqual(profileData.about ,newProfileData.about);
         Assert.AreEqual(profileData.nickname,newProfileData.nickname);
+        
     }
     
     public static IEnumerable<ProfileData> GroupDataFromXmlFile()
